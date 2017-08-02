@@ -73,4 +73,29 @@ public class SeatDesafioService {
 		return senhas;
 	}
 
+	public void obterQuantidadeSenhasNaFrente(List<SenhaDTO> resultado) {
+		for (int i = 0; i < resultado.size(); i++) {
+			SenhaDTO dto = resultado.get(i);
+			dto.setNaFrente(i);
+			dto.setEspera(obterTempoEspera(resultado, i));
+		}
+		
+	}
+
+	private Long obterTempoEspera(List<SenhaDTO> resultado, int index) {
+		Long totalEspera = 0l;
+		
+		for (SenhaDTO senhaDTO : resultado) {
+			int antIndex = (index > 0) ? index - 1 : 0;
+			long tempoEntreSenhasConsecutivas = senhaDTO.getEmissao() - resultado.get(antIndex).getEmissao();
+			totalEspera += tempoEntreSenhasConsecutivas;
+			
+			if (resultado.indexOf(senhaDTO) == index) {
+				break;
+			} 
+		}
+		
+		return Math.abs(totalEspera);
+	}
+
 }

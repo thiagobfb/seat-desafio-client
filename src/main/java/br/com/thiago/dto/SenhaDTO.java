@@ -21,6 +21,34 @@ public class SenhaDTO implements Serializable, Comparable<SenhaDTO> {
 	private Long chamada;
 	
 	private String atendente;
+	
+	private Integer naFrente;
+	
+	private Long espera;
+
+	public SenhaDTO() {
+		
+	}
+	
+	public SenhaDTO(String senha, Long emissao, String prioridade, Long chamada, String atendente, Integer naFrente,
+			Long espera) {
+		super();
+		this.senha = senha;
+		this.emissao = emissao;
+		this.prioridade = prioridade;
+		this.chamada = chamada;
+		this.atendente = atendente;
+		this.naFrente = naFrente;
+		this.espera = espera;
+	}
+
+	public SenhaDTO(String senha, Long emissao, String prioridade, Long chamada, String atendente) {
+		this.senha = senha;
+		this.emissao = emissao;
+		this.prioridade = prioridade;
+		this.chamada = chamada;
+		this.atendente = atendente;
+	}
 
 	public String getSenha() {
 		return senha;
@@ -62,10 +90,26 @@ public class SenhaDTO implements Serializable, Comparable<SenhaDTO> {
 		this.atendente = atendente;
 	}
 
+	public Integer getNaFrente() {
+		return naFrente;
+	}
+
+	public Long getEspera() {
+		return espera;
+	}
+
+	public void setEspera(Long espera) {
+		this.espera = espera;
+	}
+
+	public void setNaFrente(Integer naFrente) {
+		this.naFrente = naFrente;
+	}
+
 	@Override
 	public String toString() {
 		return "SenhaDTO [senha=" + senha + ", emissao=" + emissao + ", prioridade=" + prioridade + ", chamada="
-				+ chamada + ", atendente=" + atendente + "]";
+				+ chamada + ", atendente=" + atendente + ", naFrente=" + naFrente + ", espera=" + espera + "]";
 	}
 
 	@Override
